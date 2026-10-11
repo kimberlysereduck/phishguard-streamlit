@@ -148,7 +148,7 @@ Manage notification preferences at https://github.com/settings/notifications""",
 
 # Sidebar Configuration
 with st.sidebar:
-    st.image("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80", use_container_width=True)
+    st.image("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80", width='stretch')
     st.title("🛡️ SOC Threat Controls")
     
     # API Key Configuration
@@ -207,7 +207,7 @@ with tab_scan:
             value=st.session_state.get("body_input", ""),
             height=240,
             placeholder="Paste suspicious email text, HTML, or markdown message here..."
-        )
+        ) or ""
     
     with col_meta:
         sender = st.text_input(
@@ -222,7 +222,7 @@ with tab_scan:
             placeholder="From: ...\nReceived: ...\nAuthentication-Results: ..."
         )
         
-        analyze_clicked = st.button("🚀 Analyze Threat Now", type="primary", use_container_width=True)
+        analyze_clicked = st.button("🚀 Analyze Threat Now", type="primary", width='stretch')
 
     if analyze_clicked:
         if not body and not subject:
@@ -311,7 +311,7 @@ with tab_links:
             })
         
         df_links = pd.DataFrame(links_data)
-        st.dataframe(df_links, use_container_width=True)
+        st.dataframe(df_links, width='stretch')
         
         for idx, l in enumerate(result["links"], 1):
             with st.expander(f"Link #{idx}: {l['domain']} ({l['risk_level']})"):
@@ -336,7 +336,7 @@ with tab_intent:
         
         if triggers:
             trigger_df = pd.DataFrame(triggers)
-            st.dataframe(trigger_df, use_container_width=True)
+            st.dataframe(trigger_df, width='stretch')
             
             st.subheader("Psychological Coercion Profile")
             for t in triggers:
@@ -361,7 +361,7 @@ with tab_export:
             data=json.dumps(result, indent=2),
             file_name="phishguard_threat_report.json",
             mime="application/json",
-            use_container_width=True
+            width='stretch'
         )
         
         st.subheader("Raw JSON Telemetry")
