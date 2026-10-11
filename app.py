@@ -201,7 +201,7 @@ with tab_scan:
             "Email Subject",
             value=st.session_state.get("subject_input", ""),
             placeholder="e.g., URGENT: Verify your account immediately"
-        )
+        ) or ""
         body = st.text_area(
             "Email Body Content (Raw text or HTML)",
             value=st.session_state.get("body_input", ""),
@@ -214,13 +214,13 @@ with tab_scan:
             "Sender (From header)",
             value=st.session_state.get("sender_input", ""),
             placeholder="e.g., CEO <ceo@fakemail.com>"
-        )
+        ) or ""
         headers = st.text_area(
             "Raw Email Headers (Optional)",
             value=st.session_state.get("headers_input", ""),
             height=130,
             placeholder="From: ...\nReceived: ...\nAuthentication-Results: ..."
-        )
+        ) or ""
         
         analyze_clicked = st.button("🚀 Analyze Threat Now", type="primary", width='stretch')
 
