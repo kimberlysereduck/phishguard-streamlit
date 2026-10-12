@@ -63,6 +63,22 @@ The app will immediately open in your browser at `http://localhost:8501`!
 
 ---
 
+## 🧪 Tests
+
+Install the development dependencies and run the complete test suite:
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
+Tests are organized into unit tests (`tests/unit`), analyzer integration tests
+(`tests/integration`), mocked Gemini API tests (`tests/api`), and headless
+Streamlit UI tests (`tests/ui`). The Gemini API tests use a mock client and do
+not require an API key or make network requests.
+
+---
+
 ## 📁 Project Architecture
 
 ```
